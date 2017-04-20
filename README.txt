@@ -6,16 +6,16 @@ analysis/
     Contains all of the scripts used to analyze the yeast-proteins data set
 
     unordered_analysis/
-        Contains the scripts that are used to analyze the yeast-proteins data set (unranked KL data)
+        Contains the scripts used to analyze the proteins data set (unranked data)
     ordered_analysis/
-        Contains the scripts that are used to analyze the yeast-proteins data set (ranked KL data)
+        Contains the scripts used to analyze the proteins data set (ranked data)
 
     analysis_functions.py
         This a helper file that contains a series of functions used in the analysis				
     calculate_distribution_files.py
-        This is a script that calculates all of the amino acid count data for the designed yeast proteins.
+        This is a script that calculates all of the amino acid count data for the designed proteins.
     calculate_natural_distribution_files.py
-        This is a script that calculates all of the amino acid count data for the natural yeast proteins.
+        This is a script that calculates all of the amino acid count data for the natural proteins.
     generate_graph_data.py
         This is a script that calculates all of the entropy, KL-Divergence, Entropy-Entropy, Entropy-RSA, Entropy-iCN and Entropy-iWCN correlation analysis
 	
