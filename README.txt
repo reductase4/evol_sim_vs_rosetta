@@ -13,11 +13,11 @@ analysis/
     analysis_functions.py
         This a helper file that contains a series of functions used in the analysis				
     calculate_distribution_files.py
-        This is a script that calculates all of the amino acid count data for the designed proteins.
+        This is a script that calculates the amino acid count data for the designed proteins.
     calculate_natural_distribution_files.py
-        This is a script that calculates all of the amino acid count data for the natural proteins.
+        This is a script that calculates the amino acid count data for the natural proteins.
     generate_graph_data.py
-        This is a script that calculates all of the entropy, KL-Divergence, Entropy-Entropy, Entropy-RSA, Entropy-iCN and Entropy-iWCN correlation analysis
+        This is a script that calculates the entropy, KL-Divergence, Entropy-Entropy, Entropy-RSA, Entropy-iCN and Entropy-iWCN correlation.
 	
 
 graphing/
@@ -55,7 +55,7 @@ methods_scripts/
     design_protein_fixed.sh
         This the shell script that was used to create the fixed backbone protein design
         For arguments you must give it the PDB name and the temperature used for Backrub.
-        Since it is a fixed design we just set the temperature to 0.0 purely for identification purposes.
+        For a fixed design, we just set the temperature to 0.0 purely for identification purposes.
     score_mutant_AIT_v1_1.py
         This is a script that was used to minimize native structures
         For arguments you must give it the PDB name and score extracted from minimized structures.
