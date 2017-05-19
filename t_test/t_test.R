@@ -60,6 +60,7 @@ t.test(evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c("grea
 # t-test of KL unorder
 KL_unorder <- read.csv("graph_mean_KL_all_method_data.csv", header = TRUE, sep = "")
 
+A <- factor(rep(1:3, each=38), labels = c("natural","evolved","rosetta"))
 X <- c(KL_unorder$mean_KL_split_natural, KL_unorder$mean_KL_method_evolved, KL_unorder$mean_KL_method_rosetta)
 KL_unorder_data <- data.frame(X, A)
 
@@ -67,6 +68,8 @@ aov.kl <- aov(X~A, data = KL_unorder_data)
 summary(aov.kl)
 
 pairwise.t.test(X, A, p.adjust.method="bonferroni")
+
+t.test(KL_unorder$mean_KL_method_evolved, KL_unorder$mean_KL_method_rosetta, alternative = c("less"),paired = TRUE)
 
 #' t-test of KL ordered
 # t-test of KL ordered
@@ -80,5 +83,7 @@ aov.kl_ordered <- aov(X~A, data = KL_ordered_data)
 summary(aov.kl_ordered)
 
 pairwise.t.test(X, A, p.adjust.method="bonferroni")
+
+t.test(KL_ordered$mean_KL_method_evolved, KL_ordered$mean_KL_method_rosetta, alternative = c("less"),paired = TRUE)
 
 

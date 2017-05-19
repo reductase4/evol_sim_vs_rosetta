@@ -34,88 +34,46 @@ t-test of mean entropy
 
 ```r
 > # t-test of mean entropy
-> X <- c(natural$mean_entropy, evolved$mean_entropy, rosetta$mean_entropy)
-> A <- factor(rep(1:3, each=38), labels = c("natural","evolved","rosetta"))
-> entropy_data <- data.frame(X, A)
-> 
-> aov.entropy <- aov(X~A, data = entropy_data)
-> summary(aov.entropy)
-```
-
-```
-             Df Sum Sq Mean Sq F value Pr(>F)    
-A             2  58.44  29.221   98.63 <2e-16 ***
-Residuals   111  32.89   0.296                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-> plot(entropy_data$X~entropy_data$A)
-```
-
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
-
-```r
-> # compare
-> pairwise.t.test(X, A, p.adjust.method="bonferroni")
+> t.test(natural$mean_entropy, evolved$mean_entropy, paired = T)
 ```
 
 ```
 
-	Pairwise comparisons using t tests with pooled SD 
+	Paired t-test
 
-data:  X and A 
-
-        natural evolved
-evolved 1       -      
-rosetta <2e-16  <2e-16 
-
-P value adjustment method: bonferroni 
+data:  natural$mean_entropy and evolved$mean_entropy
+t = 0.4058, df = 37, p-value = 0.6872
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1815397  0.2724662
+sample estimates:
+mean of the differences 
+             0.04546327 
 ```
 
 ```r
-> pairwise.t.test(X, A, p.adjust.method="none")
+> t.test(rosetta$mean_entropy, natural$mean_entropy, alternative = "less", paired = T)
 ```
 
 ```
 
-	Pairwise comparisons using t tests with pooled SD 
+	Paired t-test
 
-data:  X and A 
-
-        natural evolved
-evolved 0.72    -      
-rosetta <2e-16  <2e-16 
-
-P value adjustment method: none 
-```
-
-```r
-> TukeyHSD(aov(X~A, entropy_data))
-```
-
-```
-  Tukey multiple comparisons of means
-    95% family-wise confidence level
-
-Fit: aov(formula = X ~ A, data = entropy_data)
-
-$A
-                       diff        lwr        upr     p adj
-evolved-natural -0.04546327 -0.3421059  0.2511793 0.9295905
-rosetta-natural -1.54107619 -1.8377188 -1.2444336 0.0000000
-rosetta-evolved -1.49561292 -1.7922555 -1.1989703 0.0000000
+data:  rosetta$mean_entropy and natural$mean_entropy
+t = -19.167, df = 37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -1.405433
+sample estimates:
+mean of the differences 
+              -1.541076 
 ```
 
 t-test of correlation of entropy
 
 
 ```r
-> # t-test of correlation of entropy
-> 
 > cor_entropy <- read.csv("graph_entropy_corr.csv", header = TRUE, sep = "")
-> 
 > # paired t-test
 > t.test(cor_entropy$natural_evolved_corr, cor_entropy$natural_rosetta_corr, alternative = c("greater"),paired = TRUE)
 ```
@@ -174,131 +132,120 @@ mean of the differences
               0.5378606 
 ```
 
-```r
-> #paired t-test with bonferroni correction
-> X <- c(natural$cor_entropy_RSA, evolved$cor_entropy_RSA, rosetta$cor_entropy_RSA)
-> cor_entropy_RSA_data <- data.frame(X, A)
-> 
-> aov.rsa <- aov(X~A, data = cor_entropy_RSA_data)
-> summary(aov.rsa)
-```
-
-```
-             Df Sum Sq Mean Sq F value Pr(>F)    
-A             2  5.565  2.7825   245.1 <2e-16 ***
-Residuals   111  1.260  0.0114                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-> pairwise.t.test(X, A, p.adjust.method="bonferroni")
-```
-
-```
-
-	Pairwise comparisons using t tests with pooled SD 
-
-data:  X and A 
-
-        natural evolved
-evolved 4.1e-14 -      
-rosetta < 2e-16 < 2e-16
-
-P value adjustment method: bonferroni 
-```
-
 t-test of correlation of entropy and icn
 
 
 ```r
-> # t-test of correlation of entropy and icn
-> 
-> X <- c(natural$cor_entropy_icn, evolved$cor_entropy_icn, rosetta$cor_entropy_icn)
-> cor_entropy_icn_data <- data.frame(X, A)
-> 
-> aov.icn <- aov(X~A, data = cor_entropy_icn_data)
-> summary(aov.icn)
-```
-
-```
-             Df Sum Sq Mean Sq F value Pr(>F)    
-A             2  5.070  2.5350   237.8 <2e-16 ***
-Residuals   111  1.183  0.0107                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-> pairwise.t.test(X, A, p.adjust.method="bonferroni")
-```
-
-```
-
-	Pairwise comparisons using t tests with pooled SD 
-
-data:  X and A 
-
-        natural evolved
-evolved 0.00046 -      
-rosetta < 2e-16 < 2e-16
-
-P value adjustment method: bonferroni 
-```
-
-t-test of correlation of entropy and iwcn
-
-
-```r
-> # t-test of correlation of entropy and iwcn
-> t.test(evolved$cor_entropy_iwcn, natural$cor_entropy_iwcn, paired = TRUE)
+> # paired t-test
+> t.test(natural$cor_entropy_icn, evolved$cor_entropy_icn, paired = TRUE)
 ```
 
 ```
 
 	Paired t-test
 
-data:  evolved$cor_entropy_iwcn and natural$cor_entropy_iwcn
-t = 2.8162, df = 37, p-value = 0.007748
+data:  natural$cor_entropy_icn and evolved$cor_entropy_icn
+t = -4.1254, df = 37, p-value = 0.0002013
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 0.01864326 0.11427761
+ -0.13849664 -0.04726081
 sample estimates:
 mean of the differences 
-             0.06646044 
+            -0.09287872 
 ```
 
 ```r
-> X <- c(natural$cor_entropy_iwcn, evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn)
-> cor_entropy_iwcn_data <- data.frame(X, A)
-> 
-> aov.iwcn <- aov(X~A, data = cor_entropy_iwcn_data)
-> summary(aov.iwcn)
+> t.test(natural$cor_entropy_icn, rosetta$cor_entropy_icn, alternative = c("greater"),paired = TRUE)
 ```
 
 ```
-             Df Sum Sq Mean Sq F value Pr(>F)    
-A             2  5.140  2.5702   225.4 <2e-16 ***
-Residuals   111  1.266  0.0114                   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+	Paired t-test
+
+data:  natural$cor_entropy_icn and rosetta$cor_entropy_icn
+t = 14.798, df = 37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.3487537       Inf
+sample estimates:
+mean of the differences 
+              0.3936325 
 ```
 
 ```r
-> pairwise.t.test(X, A, p.adjust.method="bonferroni")
+> t.test(evolved$cor_entropy_icn, rosetta$cor_entropy_icn, alternative = c("greater"),paired = TRUE)
 ```
 
 ```
 
-	Pairwise comparisons using t tests with pooled SD 
+	Paired t-test
 
-data:  X and A 
+data:  evolved$cor_entropy_icn and rosetta$cor_entropy_icn
+t = 29.447, df = 37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.4586377       Inf
+sample estimates:
+mean of the differences 
+              0.4865112 
+```
 
-        natural evolved
-evolved 0.023   -      
-rosetta <2e-16  <2e-16 
+t-test of correlation of entropy and iwcn
 
-P value adjustment method: bonferroni 
+
+```r
+> # paired t-test
+> t.test(natural$cor_entropy_iwcn, evolved$cor_entropy_iwcn, paired = TRUE)
+```
+
+```
+
+	Paired t-test
+
+data:  natural$cor_entropy_iwcn and evolved$cor_entropy_iwcn
+t = -2.8162, df = 37, p-value = 0.007748
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.11427761 -0.01864326
+sample estimates:
+mean of the differences 
+            -0.06646044 
+```
+
+```r
+> t.test(natural$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c("greater"),paired = TRUE)
+```
+
+```
+
+	Paired t-test
+
+data:  natural$cor_entropy_iwcn and rosetta$cor_entropy_iwcn
+t = 15.68, df = 37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.369037      Inf
+sample estimates:
+mean of the differences 
+              0.4135302 
+```
+
+```r
+> t.test(evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c("greater"),paired = TRUE)
+```
+
+```
+
+	Paired t-test
+
+data:  evolved$cor_entropy_iwcn and rosetta$cor_entropy_iwcn
+t = 29.14, df = 37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.452201      Inf
+sample estimates:
+mean of the differences 
+              0.4799906 
 ```
 
 t-test of KL unorder
@@ -308,6 +255,7 @@ t-test of KL unorder
 > # t-test of KL unorder
 > KL_unorder <- read.csv("graph_mean_KL_all_method_data.csv", header = TRUE, sep = "")
 > 
+> A <- factor(rep(1:3, each=38), labels = c("natural","evolved","rosetta"))
 > X <- c(KL_unorder$mean_KL_split_natural, KL_unorder$mean_KL_method_evolved, KL_unorder$mean_KL_method_rosetta)
 > KL_unorder_data <- data.frame(X, A)
 > 
@@ -338,6 +286,24 @@ evolved <2e-16  -
 rosetta <2e-16  <2e-16 
 
 P value adjustment method: bonferroni 
+```
+
+```r
+> t.test(KL_unorder$mean_KL_method_evolved, KL_unorder$mean_KL_method_rosetta, alternative = c("less"),paired = TRUE)
+```
+
+```
+
+	Paired t-test
+
+data:  KL_unorder$mean_KL_method_evolved and KL_unorder$mean_KL_method_rosetta
+t = -23.051, df = 37, p-value < 2.2e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -1.483286
+sample estimates:
+mean of the differences 
+              -1.600423 
 ```
 
 t-test of KL ordered
@@ -378,5 +344,23 @@ evolved < 2e-16 -
 rosetta < 2e-16 2.4e-16
 
 P value adjustment method: bonferroni 
+```
+
+```r
+> t.test(KL_ordered$mean_KL_method_evolved, KL_ordered$mean_KL_method_rosetta, alternative = c("less"),paired = TRUE)
+```
+
+```
+
+	Paired t-test
+
+data:  KL_ordered$mean_KL_method_evolved and KL_ordered$mean_KL_method_rosetta
+t = -8.4473, df = 37, p-value = 1.845e-10
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf -0.2803324
+sample estimates:
+mean of the differences 
+             -0.3502929 
 ```
 

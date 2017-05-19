@@ -189,78 +189,41 @@ hr {
 <p>t-test of mean entropy</p>
 
 <pre><code class="r">&gt; # t-test of mean entropy
-&gt; X &lt;- c(natural$mean_entropy, evolved$mean_entropy, rosetta$mean_entropy)
-&gt; A &lt;- factor(rep(1:3, each=38), labels = c(&quot;natural&quot;,&quot;evolved&quot;,&quot;rosetta&quot;))
-&gt; entropy_data &lt;- data.frame(X, A)
-&gt; 
-&gt; aov.entropy &lt;- aov(X~A, data = entropy_data)
-&gt; summary(aov.entropy)
-</code></pre>
-
-<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
-A             2  58.44  29.221   98.63 &lt;2e-16 ***
-Residuals   111  32.89   0.296                   
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-</code></pre>
-
-<pre><code class="r">&gt; plot(entropy_data$X~entropy_data$A)
-</code></pre>
-
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-4"/></p>
-
-<pre><code class="r">&gt; # compare
-&gt; pairwise.t.test(X, A, p.adjust.method=&quot;bonferroni&quot;)
+&gt; t.test(natural$mean_entropy, evolved$mean_entropy, paired = T)
 </code></pre>
 
 <pre><code>
-    Pairwise comparisons using t tests with pooled SD 
+    Paired t-test
 
-data:  X and A 
-
-        natural evolved
-evolved 1       -      
-rosetta &lt;2e-16  &lt;2e-16 
-
-P value adjustment method: bonferroni 
+data:  natural$mean_entropy and evolved$mean_entropy
+t = 0.4058, df = 37, p-value = 0.6872
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1815397  0.2724662
+sample estimates:
+mean of the differences 
+             0.04546327 
 </code></pre>
 
-<pre><code class="r">&gt; pairwise.t.test(X, A, p.adjust.method=&quot;none&quot;)
+<pre><code class="r">&gt; t.test(rosetta$mean_entropy, natural$mean_entropy, alternative = &quot;less&quot;, paired = T)
 </code></pre>
 
 <pre><code>
-    Pairwise comparisons using t tests with pooled SD 
+    Paired t-test
 
-data:  X and A 
-
-        natural evolved
-evolved 0.72    -      
-rosetta &lt;2e-16  &lt;2e-16 
-
-P value adjustment method: none 
-</code></pre>
-
-<pre><code class="r">&gt; TukeyHSD(aov(X~A, entropy_data))
-</code></pre>
-
-<pre><code>  Tukey multiple comparisons of means
-    95% family-wise confidence level
-
-Fit: aov(formula = X ~ A, data = entropy_data)
-
-$A
-                       diff        lwr        upr     p adj
-evolved-natural -0.04546327 -0.3421059  0.2511793 0.9295905
-rosetta-natural -1.54107619 -1.8377188 -1.2444336 0.0000000
-rosetta-evolved -1.49561292 -1.7922555 -1.1989703 0.0000000
+data:  rosetta$mean_entropy and natural$mean_entropy
+t = -19.167, df = 37, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -1.405433
+sample estimates:
+mean of the differences 
+              -1.541076 
 </code></pre>
 
 <p>t-test of correlation of entropy</p>
 
-<pre><code class="r">&gt; # t-test of correlation of entropy
-&gt; 
-&gt; cor_entropy &lt;- read.csv(&quot;graph_entropy_corr.csv&quot;, header = TRUE, sep = &quot;&quot;)
-&gt; 
+<pre><code class="r">&gt; cor_entropy &lt;- read.csv(&quot;graph_entropy_corr.csv&quot;, header = TRUE, sep = &quot;&quot;)
 &gt; # paired t-test
 &gt; t.test(cor_entropy$natural_evolved_corr, cor_entropy$natural_rosetta_corr, alternative = c(&quot;greater&quot;),paired = TRUE)
 </code></pre>
@@ -313,115 +276,106 @@ mean of the differences
               0.5378606 
 </code></pre>
 
-<pre><code class="r">&gt; #paired t-test with bonferroni correction
-&gt; X &lt;- c(natural$cor_entropy_RSA, evolved$cor_entropy_RSA, rosetta$cor_entropy_RSA)
-&gt; cor_entropy_RSA_data &lt;- data.frame(X, A)
-&gt; 
-&gt; aov.rsa &lt;- aov(X~A, data = cor_entropy_RSA_data)
-&gt; summary(aov.rsa)
-</code></pre>
-
-<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
-A             2  5.565  2.7825   245.1 &lt;2e-16 ***
-Residuals   111  1.260  0.0114                   
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-</code></pre>
-
-<pre><code class="r">&gt; pairwise.t.test(X, A, p.adjust.method=&quot;bonferroni&quot;)
-</code></pre>
-
-<pre><code>
-    Pairwise comparisons using t tests with pooled SD 
-
-data:  X and A 
-
-        natural evolved
-evolved 4.1e-14 -      
-rosetta &lt; 2e-16 &lt; 2e-16
-
-P value adjustment method: bonferroni 
-</code></pre>
-
 <p>t-test of correlation of entropy and icn</p>
 
-<pre><code class="r">&gt; # t-test of correlation of entropy and icn
-&gt; 
-&gt; X &lt;- c(natural$cor_entropy_icn, evolved$cor_entropy_icn, rosetta$cor_entropy_icn)
-&gt; cor_entropy_icn_data &lt;- data.frame(X, A)
-&gt; 
-&gt; aov.icn &lt;- aov(X~A, data = cor_entropy_icn_data)
-&gt; summary(aov.icn)
-</code></pre>
-
-<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
-A             2  5.070  2.5350   237.8 &lt;2e-16 ***
-Residuals   111  1.183  0.0107                   
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-</code></pre>
-
-<pre><code class="r">&gt; pairwise.t.test(X, A, p.adjust.method=&quot;bonferroni&quot;)
-</code></pre>
-
-<pre><code>
-    Pairwise comparisons using t tests with pooled SD 
-
-data:  X and A 
-
-        natural evolved
-evolved 0.00046 -      
-rosetta &lt; 2e-16 &lt; 2e-16
-
-P value adjustment method: bonferroni 
-</code></pre>
-
-<p>t-test of correlation of entropy and iwcn</p>
-
-<pre><code class="r">&gt; # t-test of correlation of entropy and iwcn
-&gt; t.test(evolved$cor_entropy_iwcn, natural$cor_entropy_iwcn, paired = TRUE)
+<pre><code class="r">&gt; # paired t-test
+&gt; t.test(natural$cor_entropy_icn, evolved$cor_entropy_icn, paired = TRUE)
 </code></pre>
 
 <pre><code>
     Paired t-test
 
-data:  evolved$cor_entropy_iwcn and natural$cor_entropy_iwcn
-t = 2.8162, df = 37, p-value = 0.007748
+data:  natural$cor_entropy_icn and evolved$cor_entropy_icn
+t = -4.1254, df = 37, p-value = 0.0002013
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 0.01864326 0.11427761
+ -0.13849664 -0.04726081
 sample estimates:
 mean of the differences 
-             0.06646044 
+            -0.09287872 
 </code></pre>
 
-<pre><code class="r">&gt; X &lt;- c(natural$cor_entropy_iwcn, evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn)
-&gt; cor_entropy_iwcn_data &lt;- data.frame(X, A)
-&gt; 
-&gt; aov.iwcn &lt;- aov(X~A, data = cor_entropy_iwcn_data)
-&gt; summary(aov.iwcn)
-</code></pre>
-
-<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
-A             2  5.140  2.5702   225.4 &lt;2e-16 ***
-Residuals   111  1.266  0.0114                   
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-</code></pre>
-
-<pre><code class="r">&gt; pairwise.t.test(X, A, p.adjust.method=&quot;bonferroni&quot;)
+<pre><code class="r">&gt; t.test(natural$cor_entropy_icn, rosetta$cor_entropy_icn, alternative = c(&quot;greater&quot;),paired = TRUE)
 </code></pre>
 
 <pre><code>
-    Pairwise comparisons using t tests with pooled SD 
+    Paired t-test
 
-data:  X and A 
+data:  natural$cor_entropy_icn and rosetta$cor_entropy_icn
+t = 14.798, df = 37, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.3487537       Inf
+sample estimates:
+mean of the differences 
+              0.3936325 
+</code></pre>
 
-        natural evolved
-evolved 0.023   -      
-rosetta &lt;2e-16  &lt;2e-16 
+<pre><code class="r">&gt; t.test(evolved$cor_entropy_icn, rosetta$cor_entropy_icn, alternative = c(&quot;greater&quot;),paired = TRUE)
+</code></pre>
 
-P value adjustment method: bonferroni 
+<pre><code>
+    Paired t-test
+
+data:  evolved$cor_entropy_icn and rosetta$cor_entropy_icn
+t = 29.447, df = 37, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.4586377       Inf
+sample estimates:
+mean of the differences 
+              0.4865112 
+</code></pre>
+
+<p>t-test of correlation of entropy and iwcn</p>
+
+<pre><code class="r">&gt; # paired t-test
+&gt; t.test(natural$cor_entropy_iwcn, evolved$cor_entropy_iwcn, paired = TRUE)
+</code></pre>
+
+<pre><code>
+    Paired t-test
+
+data:  natural$cor_entropy_iwcn and evolved$cor_entropy_iwcn
+t = -2.8162, df = 37, p-value = 0.007748
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.11427761 -0.01864326
+sample estimates:
+mean of the differences 
+            -0.06646044 
+</code></pre>
+
+<pre><code class="r">&gt; t.test(natural$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c(&quot;greater&quot;),paired = TRUE)
+</code></pre>
+
+<pre><code>
+    Paired t-test
+
+data:  natural$cor_entropy_iwcn and rosetta$cor_entropy_iwcn
+t = 15.68, df = 37, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.369037      Inf
+sample estimates:
+mean of the differences 
+              0.4135302 
+</code></pre>
+
+<pre><code class="r">&gt; t.test(evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c(&quot;greater&quot;),paired = TRUE)
+</code></pre>
+
+<pre><code>
+    Paired t-test
+
+data:  evolved$cor_entropy_iwcn and rosetta$cor_entropy_iwcn
+t = 29.14, df = 37, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.452201      Inf
+sample estimates:
+mean of the differences 
+              0.4799906 
 </code></pre>
 
 <p>t-test of KL unorder</p>
@@ -429,6 +383,7 @@ P value adjustment method: bonferroni
 <pre><code class="r">&gt; # t-test of KL unorder
 &gt; KL_unorder &lt;- read.csv(&quot;graph_mean_KL_all_method_data.csv&quot;, header = TRUE, sep = &quot;&quot;)
 &gt; 
+&gt; A &lt;- factor(rep(1:3, each=38), labels = c(&quot;natural&quot;,&quot;evolved&quot;,&quot;rosetta&quot;))
 &gt; X &lt;- c(KL_unorder$mean_KL_split_natural, KL_unorder$mean_KL_method_evolved, KL_unorder$mean_KL_method_rosetta)
 &gt; KL_unorder_data &lt;- data.frame(X, A)
 &gt; 
@@ -456,6 +411,22 @@ evolved &lt;2e-16  -
 rosetta &lt;2e-16  &lt;2e-16 
 
 P value adjustment method: bonferroni 
+</code></pre>
+
+<pre><code class="r">&gt; t.test(KL_unorder$mean_KL_method_evolved, KL_unorder$mean_KL_method_rosetta, alternative = c(&quot;less&quot;),paired = TRUE)
+</code></pre>
+
+<pre><code>
+    Paired t-test
+
+data:  KL_unorder$mean_KL_method_evolved and KL_unorder$mean_KL_method_rosetta
+t = -23.051, df = 37, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -1.483286
+sample estimates:
+mean of the differences 
+              -1.600423 
 </code></pre>
 
 <p>t-test of KL ordered</p>
@@ -491,6 +462,22 @@ evolved &lt; 2e-16 -
 rosetta &lt; 2e-16 2.4e-16
 
 P value adjustment method: bonferroni 
+</code></pre>
+
+<pre><code class="r">&gt; t.test(KL_ordered$mean_KL_method_evolved, KL_ordered$mean_KL_method_rosetta, alternative = c(&quot;less&quot;),paired = TRUE)
+</code></pre>
+
+<pre><code>
+    Paired t-test
+
+data:  KL_ordered$mean_KL_method_evolved and KL_ordered$mean_KL_method_rosetta
+t = -8.4473, df = 37, p-value = 1.845e-10
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf -0.2803324
+sample estimates:
+mean of the differences 
+             -0.3502929 
 </code></pre>
 
 </body>
