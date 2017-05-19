@@ -152,7 +152,7 @@ for protein in PDBS:
 	#p3.text(0, 3, "NS", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 18)
 	
 	if count%4 == 1:
-		p1.set_ylabel('$\mathregular{e^H}$',fontsize=6, fontweight = 'bold')
+		p1.set_ylabel('$\mathregular{\Omega}$',fontsize=6, fontweight = 'bold')
 		p1.set_yticklabels(["0", " ", "10", " ", "20"], fontsize=5)
 	
 	if count == 35 or count == 36 or count == 37 or count ==38:
@@ -169,7 +169,7 @@ for protein in PDBS:
 led = fig1.legend((d1, d2, d3), ('FB', 'ES', 'NS'), 'lower center', fontsize=6, ncol=3)
 led.get_frame().set_linewidth(0.5)	
 
-save_fig_title = "entropy_vs_rsa_38" + ".pdf"
+save_fig_title = "entropy_vs_RSA_for_each" + ".pdf"
 savefig(save_fig_title, format = None)
 
 #plt.show()	

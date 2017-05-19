@@ -122,13 +122,13 @@ for protein in PDBS:
 	
 	
 	if count%5 == 1:
-		p1.set_ylabel('$\mathregular{e^H}$',fontsize=6, fontweight = 'bold')
+		p1.set_ylabel('$\mathregular{\Omega}$',fontsize=6, fontweight = 'bold')
 		p1.set_yticklabels([" ", "1", "", "3", "", "5"], fontsize=5)
 	
 	if count == 34 or count == 35 or count == 36 or count == 37 or count == 38:
-		p1.set_xlabel('$\mathregular{e^H}$(NS)',fontsize=6, fontweight = 'bold')
+		p1.set_xlabel('$\mathregular{\Omega_{NS}}$',fontsize=6, fontweight = 'bold')
 		p1.set_xticklabels([" ", "1", "", "3", "", "5"], fontsize=5)
-		p2.set_xlabel('$\mathregular{e^H}$(NS)',fontsize=6, fontweight = 'bold')
+		p2.set_xlabel('$\mathregular{\Omega_{NS}}$',fontsize=6, fontweight = 'bold')
 		p2.set_xticklabels([" ", "1", "", "3", "", "5"], fontsize=5)
 		
 	print count

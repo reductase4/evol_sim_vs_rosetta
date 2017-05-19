@@ -75,7 +75,7 @@ rcParams['lines.linewidth'] = 2
 ax = axes([0.2, 0.2, 0.7, 0.7])
 
 #cor entropy-entropy
-plt_plot_diagonal_single(natural_rosetta_corr_values, natural_evolved_corr_values, ax, r'$\mathregular{e^H}$' + "(NS - FB)", r'$\mathregular{e^H}$' + "(NS - ES)")
+plt_plot_diagonal_single(natural_rosetta_corr_values, natural_evolved_corr_values, ax, r'$\Omega_\mathregular{NS}$ - $\Omega_\mathregular{FB}$', r'$\Omega_\mathregular{NS}$ - $\Omega_\mathregular{ES}$')
 ax.text(-0.95, 0.8, "A", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
 save_fig_title = "Cor_entropy" + ".pdf"
@@ -103,33 +103,33 @@ p9 = plt.subplot(339)
 subplots_adjust(left=0.12, bottom=0.118, right=0.96, top=0.92, wspace=0.5, hspace=0.56)
 
 #cor entropy-RSA
-plt_plot_diagonal(designed_cor_entropy_RSA_values_rosetta, designed_cor_entropy_RSA_values_evolved, p1, r'$\mathregular{e^H}$'+"- RSA (FB)", r'$\mathregular{e^H}$'+"- RSA (ES)")
+plt_plot_diagonal(designed_cor_entropy_RSA_values_rosetta, designed_cor_entropy_RSA_values_evolved, p1, r'$\Omega$'+"- RSA (FB)", r'$\Omega$'+"- RSA (ES)")
 p1.text(-0.77, 0.9, "A", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
-plt_plot_diagonal(natural_cor_entropy_RSA_values, designed_cor_entropy_RSA_values_evolved, p2, r'$\mathregular{e^H}$'+"- RSA (NS)", r'$\mathregular{e^H}$'+"- RSA (ES)")
+plt_plot_diagonal(natural_cor_entropy_RSA_values, designed_cor_entropy_RSA_values_evolved, p2, r'$\Omega$'+"- RSA (NS)", r'$\Omega$'+"- RSA (ES)")
 p2.text(-0.77, 0.9, "B", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
-plt_plot_diagonal(designed_cor_entropy_RSA_values_rosetta, natural_cor_entropy_RSA_values, p3, r'$\mathregular{e^H}$'+"- RSA (FB)", r'$\mathregular{e^H}$'+"- RSA (NS)")
+plt_plot_diagonal(designed_cor_entropy_RSA_values_rosetta, natural_cor_entropy_RSA_values, p3, r'$\Omega$'+"- RSA (FB)", r'$\Omega$'+"- RSA (NS)")
 p3.text(-0.77, 0.9, "C", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
 #cor entropy-icn
-plt_plot_diagonal(designed_cor_entropy_icn_values_rosetta, designed_cor_entropy_icn_values_evolved, p4, r'$\mathregular{e^H}$'+"- iCN (FB)", r'$\mathregular{e^H}$'+"- iCN (ES)")
+plt_plot_diagonal(designed_cor_entropy_icn_values_rosetta, designed_cor_entropy_icn_values_evolved, p4, r'$\Omega$'+"- iCN (FB)", r'$\Omega$'+"- iCN (ES)")
 p4.text(-0.77, 0.9, "D", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
-plt_plot_diagonal(natural_cor_entropy_icn_values, designed_cor_entropy_icn_values_evolved, p5, r'$\mathregular{e^H}$'+"- iCN (NS)", r'$\mathregular{e^H}$'+"- iCN (ES)")
+plt_plot_diagonal(natural_cor_entropy_icn_values, designed_cor_entropy_icn_values_evolved, p5, r'$\Omega$'+"- iCN (NS)", r'$\Omega$'+"- iCN (ES)")
 p5.text(-0.77, 0.9, "E", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
-plt_plot_diagonal(designed_cor_entropy_icn_values_rosetta, natural_cor_entropy_icn_values, p6, r'$\mathregular{e^H}$'+"- iCN (FB)", r'$\mathregular{e^H}$'+"- iCN (NS)")
+plt_plot_diagonal(designed_cor_entropy_icn_values_rosetta, natural_cor_entropy_icn_values, p6, r'$\Omega$'+"- iCN (FB)", r'$\Omega$'+"- iCN (NS)")
 p6.text(-0.77, 0.9, "F", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
 #cor entropy-iwcn
-plt_plot_diagonal(designed_cor_entropy_iwcn_values_rosetta, designed_cor_entropy_iwcn_values_evolved, p7, r'$\mathregular{e^H}$'+"- iWCN (FB)", r'$\mathregular{e^H}$'+"- iWCN (ES)")
+plt_plot_diagonal(designed_cor_entropy_iwcn_values_rosetta, designed_cor_entropy_iwcn_values_evolved, p7, r'$\Omega$'+"- iWCN (FB)", r'$\Omega$'+"- iWCN (ES)")
 p7.text(-0.77, 0.9, "G", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
-plt_plot_diagonal(natural_cor_entropy_iwcn_values, designed_cor_entropy_iwcn_values_evolved, p8, r'$\mathregular{e^H}$'+"- iWCN (NS)", r'$\mathregular{e^H}$'+"- iWCN (ES)")
+plt_plot_diagonal(natural_cor_entropy_iwcn_values, designed_cor_entropy_iwcn_values_evolved, p8, r'$\Omega$'+"- iWCN (NS)", r'$\Omega$'+"- iWCN (ES)")
 p8.text(-0.77, 0.9, "H", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
-plt_plot_diagonal(designed_cor_entropy_iwcn_values_rosetta, natural_cor_entropy_iwcn_values, p9, r'$\mathregular{e^H}$'+"- iWCN (FB)", r'$\mathregular{e^H}$'+"- iWCN (NS)")
+plt_plot_diagonal(designed_cor_entropy_iwcn_values_rosetta, natural_cor_entropy_iwcn_values, p9, r'$\Omega$'+"- iWCN (FB)", r'$\Omega$'+"- iWCN (NS)")
 p9.text(-0.77, 0.9, "I", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 8)
 
 save_fig_title = "Cor_combo" + ".pdf"

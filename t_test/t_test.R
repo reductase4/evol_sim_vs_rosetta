@@ -31,71 +31,30 @@ rosetta <- read.csv("graph_mean_data_rosetta.csv", header = TRUE, sep = "")
 
 #' t-test of mean entropy
 # t-test of mean entropy
-X <- c(natural$mean_entropy, evolved$mean_entropy, rosetta$mean_entropy)
-A <- factor(rep(1:3, each=38), labels = c("natural","evolved","rosetta"))
-entropy_data <- data.frame(X, A)
-
-aov.entropy <- aov(X~A, data = entropy_data)
-summary(aov.entropy)
-
-#plot(entropy_data$X~entropy_data$A)
-
-# compare
-pairwise.t.test(X, A, p.adjust.method="bonferroni")
-
-pairwise.t.test(X, A, p.adjust.method="none")
-
-TukeyHSD(aov(X~A, entropy_data))
+t.test(natural$mean_entropy, evolved$mean_entropy, paired = T)
+t.test(rosetta$mean_entropy, natural$mean_entropy, alternative = "less", paired = T)
 
 #' t-test of correlation of entropy
-# t-test of correlation of entropy
-
 cor_entropy <- read.csv("graph_entropy_corr.csv", header = TRUE, sep = "")
-
 # paired t-test
 t.test(cor_entropy$natural_evolved_corr, cor_entropy$natural_rosetta_corr, alternative = c("greater"),paired = TRUE)
-
 
 #' t-test of correlation of entropy and RSA
 # paired t-test
 t.test(evolved$cor_entropy_RSA, natural$cor_entropy_RSA, alternative = c("greater"),paired = TRUE)
-
 t.test(evolved$cor_entropy_RSA, rosetta$cor_entropy_RSA, alternative = c("greater"),paired = TRUE)
 
-#paired t-test with bonferroni correction
-X <- c(natural$cor_entropy_RSA, evolved$cor_entropy_RSA, rosetta$cor_entropy_RSA)
-cor_entropy_RSA_data <- data.frame(X, A)
-
-aov.rsa <- aov(X~A, data = cor_entropy_RSA_data)
-summary(aov.rsa)
-
-pairwise.t.test(X, A, p.adjust.method="bonferroni")
-
-
 #' t-test of correlation of entropy and icn
-# t-test of correlation of entropy and icn
-
-X <- c(natural$cor_entropy_icn, evolved$cor_entropy_icn, rosetta$cor_entropy_icn)
-cor_entropy_icn_data <- data.frame(X, A)
-
-aov.icn <- aov(X~A, data = cor_entropy_icn_data)
-summary(aov.icn)
-
-pairwise.t.test(X, A, p.adjust.method="bonferroni")
-
+# paired t-test
+t.test(natural$cor_entropy_icn, evolved$cor_entropy_icn, paired = TRUE)
+t.test(natural$cor_entropy_icn, rosetta$cor_entropy_icn, alternative = c("greater"),paired = TRUE)
+t.test(evolved$cor_entropy_icn, rosetta$cor_entropy_icn, alternative = c("greater"),paired = TRUE)
 
 #' t-test of correlation of entropy and iwcn
-# t-test of correlation of entropy and iwcn
-t.test(evolved$cor_entropy_iwcn, natural$cor_entropy_iwcn, paired = TRUE)
-
-X <- c(natural$cor_entropy_iwcn, evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn)
-cor_entropy_iwcn_data <- data.frame(X, A)
-
-aov.iwcn <- aov(X~A, data = cor_entropy_iwcn_data)
-summary(aov.iwcn)
-
-pairwise.t.test(X, A, p.adjust.method="bonferroni")
-
+# paired t-test
+t.test(natural$cor_entropy_iwcn, evolved$cor_entropy_iwcn, paired = TRUE)
+t.test(natural$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c("greater"),paired = TRUE)
+t.test(evolved$cor_entropy_iwcn, rosetta$cor_entropy_iwcn, alternative = c("greater"),paired = TRUE)
 
 #' t-test of KL unorder
 # t-test of KL unorder
