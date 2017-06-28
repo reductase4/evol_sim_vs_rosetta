@@ -5,11 +5,6 @@ Directories:
 analysis/
     Contains all of the scripts used to analyze the yeast-proteins data set
 
-    unordered_analysis/
-        Contains the scripts used to analyze the proteins data set (unranked data)
-    ordered_analysis/
-        Contains the scripts used to analyze the proteins data set (ranked data)
-
     analysis_functions.py
         This a helper file that contains a series of functions used in the analysis				
     calculate_distribution_files.py
@@ -24,21 +19,21 @@ graphing/
     A series of python scripts that analysis the data and produce the figures for the paper.
 
     analysis_functions.py
-        This a helper file that contains a series of functions used in the analysis				
-    get_mean_effective_num_plot.py
+        This a helper file that contains a series of functions used in the analysis
+    get_seq_divergence.py
         This script is the script that is used to create Figure 1.
-    get_cor_combo.py
-        This script is the script that is used to create Figures 2, and S1.
-    get_cor_entropy_RSA_comb.py
-        This script is the script that is used to create Figure 3.
-    get_combo_freq_plots.py
-        This script is the script that is used to create Figure 4.
     get_KL_boxplots.py
+        This script is the script that is used to create Figure 2.
+    get_mean_effective_num_plot.py
+        This script is the script that is used to create Figure 3.
+    get_cor_combo.py
+        This script is the script that is used to create Figures 4, S2 and S3.
+    get_cor_entropy_RSA_comb.py
         This script is the script that is used to create Figure 5.
-    get_entropy_vs_rsa_38.py
-        This script is the script that is used to create Figure S2.
-    get_entropy_vs_entropy_38.py
-        This script is the script that is used to create Figure S3.
+    get_re_simulated_combo.py
+        This script is the script that is used to create Figure 6.
+    get_combo_freq_plots.py
+        This script is the script that is used to create Figure S1.
     
 t_test/
     Contains all of the R scripts used in the analysis
@@ -62,6 +57,14 @@ methods_scripts/
 
 sequences/
     Contains all of the sequences (both designed and natural) for the project
+    
+    aligned_sequences/
+        These are the natural alignments
+    designed_sequences/
+        These are the designed sequences extracted from the yeast-protein designed proteins 	
+
+sequences_ten/
+    Contains all of the sequences (both designed and natural) for evolved_from_design analysis
     
     aligned_sequences/
         These are the natural alignments

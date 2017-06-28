@@ -227,15 +227,15 @@ for type in hydro_list:
     new_natural_mean_aa_freqs.append(natural_mean_aa_freqs_dict[type])                                                                                
                                                                                                                                                       
                                                                                                   
-fig = plt.figure(count)#, dpi = 500)                                                                                                                  
+fig = plt.figure(dpi = 500)                                                                                                                  
                                                                                                                                                       
 ax = plt.axes([0.09, 0.71, 0.87, 0.28])                                                                                                               
 ax.text(0.32, 0.23, "All", ha = 'center', fontsize = 15)#, va = 'center', fontsize = 16)                                                              
 ax.text(-1.0, 0.251, "A", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 15)                                                           
 width = 0.25 #The width of the bars                                                                                                                   
-b1 = plt.bar(index, new_designed_rosetta_mean_aa_freqs, width, color = "cyan")                                                                        
-b2 = plt.bar(index+width, new_designed_evolved_mean_aa_freqs, width, color = "wheat")                                                                
-b3 = plt.bar(index+width+width, new_natural_mean_aa_freqs, width, color = "magenta")                                                                      
+b1 = plt.bar(index, new_designed_rosetta_mean_aa_freqs, width, color = "#D55E00")                                                                        
+b2 = plt.bar(index+width, new_designed_evolved_mean_aa_freqs, width, color = "#009E73")                                                                
+b3 = plt.bar(index+width+width, new_natural_mean_aa_freqs, width, color = "#0072B2")                                                                      
                                                                                                                                                       
 ax.set_xticklabels(hydro_list)                                                                                                                        
 ax.set_xticks(index+width)                                                                                                                            
@@ -247,14 +247,15 @@ ax.get_xaxis().tick_bottom()
 ax.get_yaxis().tick_left()                                                                                                                            
 ax.set_yticks([0.00, 0.05, 0.10, 0.15, 0.20, 0.25])                                                                                                   
 ax.set_yticklabels(["0.00", "0.05", "0.10", "0.15", "0.20", "0.25"])                                                                                  
-ax.legend([b1, b2, b3], ["FB", "ES", "NS"], numpoints = 1, frameon = False, loc = 1, prop = {'size': 15})            
+#ax.legend([b1, b2, b3], ["designed sequences", "evolved sequences", "natural sequences"], numpoints = 1, frameon = False, loc = 1, bbox_to_anchor=(1, 1.05), prop = {'size': 15})            
+ax.legend([b1, b2, b3], ["designed", "evolved", "natural"], numpoints = 1, frameon = False, loc = 1, bbox_to_anchor=(1, 1.05), prop = {'size': 15})            
                                                                                                                                                       
 ax2 = plt.axes([0.09, 0.38, 0.87, 0.28])                                                                                                              
 ax2.text(0.8, 0.23, "Exposed", ha = 'center', fontsize = 15)                                                                                          
 ax2.text(-1.0, 0.251, "B", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 15)                                                          
-b4 = plt.bar(index, new_designed_rosetta_surface_mean_freqs, width, color = "cyan")                                                                   
-b5 = plt.bar(index + width, new_designed_evolved_surface_mean_freqs, width, color = "wheat")                                                         
-b6 = plt.bar(index + width + width, new_natural_surface_mean_freqs, width, color = "magenta")                                                             
+b4 = plt.bar(index, new_designed_rosetta_surface_mean_freqs, width, color = "#D55E00")                                                                   
+b5 = plt.bar(index + width, new_designed_evolved_surface_mean_freqs, width, color = "#009E73")                                                         
+b6 = plt.bar(index + width + width, new_natural_surface_mean_freqs, width, color = "#0072B2")                                                             
 ax2.set_xticklabels(hydro_list)                                                                                                                       
 ax2.set_xticks(index+width)                                                                                                                           
 #ax2.set_xlabel("Amino Acid")                                                                                                                         
@@ -269,9 +270,9 @@ ax2.set_yticklabels(["0.00", "0.05", "0.10", "0.15", "0.20", "0.25"])
 ax3 = plt.axes([0.09, 0.06, 0.87, 0.28])                                                                                                              
 ax3.text(0.64, 0.23, "Buried", ha = 'center', fontsize = 15)                                                                                          
 ax3.text(-1.0, 0.251, "C", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 15)                                                          
-b7 = plt.bar(index, new_designed_rosetta_buried_mean_freqs, width, color = "cyan")                                                                    
-b8 = plt.bar(index + width, new_designed_evolved_buried_mean_freqs, width, color = "wheat")                                                          
-b9 = plt.bar(index + width + width, new_natural_buried_mean_freqs, width, color = "magenta")                                                              
+b7 = plt.bar(index, new_designed_rosetta_buried_mean_freqs, width, color = "#D55E00")                                                                    
+b8 = plt.bar(index + width, new_designed_evolved_buried_mean_freqs, width, color = "#009E73")                                                          
+b9 = plt.bar(index + width + width, new_natural_buried_mean_freqs, width, color = "#0072B2")                                                              
                                                                                                                                                       
 ax3.set_xticklabels(hydro_list)                                                                                                                       
 ax3.set_xticks(index+width)                                                                                                                           
@@ -285,8 +286,8 @@ ax3.set_yticks([0.00, 0.05, 0.10, 0.15, 0.20, 0.25])
 ax3.set_yticklabels(["0.00", "0.05", "0.10", "0.15", "0.20", "0.25"])                                                                                 
 #plt.legend([b5, b6], [temp_string, "Natural"], numpoints = 1, frameon = False, loc = 1 , prop = {'size': 15})                                        
                                                                                                                                                       
-fig_title = "Duncan_Freq_Combo_Plots" + ".pdf"                                                                                         
+fig_title = "amino_acid_distribution" + ".eps"                                                                                         
+#fig_title = "amino_acid_distribution" + ".pdf"
 plt.savefig(fig_title, format = None)                                                                                                                 
 #plt.show()                                                                                                                                           
 count = count + 1                                                                                                                                     
-

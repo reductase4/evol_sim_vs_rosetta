@@ -11,7 +11,7 @@ options (warn=-1)
 
 #' T test
 # set working directory
-setwd("~/Desktop/evol_sim_vs_rosetta//t_test/")
+setwd("~/Desktop/evol_sim_vs_rosetta/t_test/")
 
 #install.packages("tidyr")
 #install.packages("dplyr")
@@ -86,4 +86,9 @@ pairwise.t.test(X, A, p.adjust.method="bonferroni")
 
 t.test(KL_ordered$mean_KL_method_evolved, KL_ordered$mean_KL_method_rosetta, alternative = c("less"),paired = TRUE)
 
+#' t-test of mean seq divergence
+seq_divergence <- read.csv("mean_seq_divergence.csv", header = TRUE, sep = "")
+# paired t-test
+t.test(seq_divergence$rosetta, seq_divergence$natural, alternative = c("greater"),paired = TRUE)
+t.test(seq_divergence$evolved, seq_divergence$natural, paired = TRUE)
 

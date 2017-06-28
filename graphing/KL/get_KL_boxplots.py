@@ -40,12 +40,39 @@ for line in mean_KL_method_ordered_data:
     mean_KL_ordered_method_values_array = analysis_functions.make_array(data)
 all_method_ordered_mean_KL_data_array = array(all_method_ordered_data)
 
+#Make boxplot for method vs Mean KL with unordered boxplot
+fig = plt.figure(dpi = 500)
+rcParams['figure.figsize'] = [8,6]
+rcParams['font.size'] = 20     
+rcParams['lines.linewidth'] = 2
+#ax1 = axes([0.12, 0.15, 0.8, 0.8])
+ax1 = axes([0.15, 0.12, 0.8, 0.8])
+b1 = boxplot(all_method_mean_KL_data_array, sym = "ko")
+#text(0.15, 5.0, "A", fontweight = 'bold', ha = 'center', va = 'center', fontsize = 20)
+setp(b1['whiskers'], color = 'black', linestyle = '-')
+setp(b1['boxes'], color =  'black')
+setp(b1['caps'], color = 'black')
+setp(b1['medians'], color = 'black')
+setp(b1['fliers'], color  = 'black')
+#xlabel("methods")
+ylabel("Mean KL Divergence")
+ax1.spines['top'].set_visible(False)
+ax1.spines['right'].set_visible(False)
+ax1.get_xaxis().tick_bottom()
+ax1.get_yaxis().tick_left()
+plt.yticks([0.0, 1.0, 2.0, 3.0, 4.0, 5.0], ["0.0", "1.0", "2.0", "3.0", "4.0", "5.0"])
+plt.xticks([1, 2, 3], ["designed", "evolved", "natural"])
+
+save_fig_title = "KL" + ".eps"
+savefig(save_fig_title, format = None)
+
+'''
 #This creates the combined boxplot figure for the Mean KL
 rcParams['font.size'] = 20     
 rcParams['figure.figsize'] = [14,6]
 rcParams['lines.linewidth'] = 2
 
-fig2 = plt.figure(dpi = 400)
+fig2 = plt.figure(dpi = 500)
 ax1 = axes([0.07, 0.118, 0.43, 0.849])
 grid()
 b1 = boxplot(all_method_mean_KL_data_array, sym = "ko")
@@ -55,14 +82,14 @@ setp(b1['boxes'], color =  'black')
 setp(b1['caps'], color = 'black')
 setp(b1['medians'], color = 'black')
 setp(b1['fliers'], color  = 'black')
-xlabel("methods")
+#xlabel("methods")
 ylabel("Mean KL Divergence")
 ax1.spines['top'].set_visible(False)
 ax1.spines['right'].set_visible(False)
 ax1.get_xaxis().tick_bottom()
 ax1.get_yaxis().tick_left()
 plt.yticks([0.0, 1.0, 2.0, 3.0, 4.0, 5.0], ["0.0", "1.0", "2.0", "3.0", "4.0", "5.0"])
-plt.xticks([1, 2, 3], ["FB", "ES", "NS"])
+plt.xticks([1, 2, 3], ["designed \n sequences", "evolved \n sequences", "natural \n sequences"])
 
 
 #Make boxplot for method vs Mean KL with ordered boxplot  
@@ -75,15 +102,15 @@ setp(b2['boxes'], color =  'black')
 setp(b2['caps'], color = 'black')
 setp(b2['medians'], color = 'black')
 setp(b2['fliers'], color  = 'black')
-xlabel("methods")
+#xlabel("methods")
 ax2.get_xaxis().tick_bottom()
 ax2.get_yaxis().tick_left()
 ax2.spines['top'].set_visible(False)
 ax2.spines['right'].set_visible(False)
 plt.yticks([0.0, 1.0, 2.0, 3.0, 4.0, 5.0], ["0.0", "1.0", "2.0", "3.0","4.0", "5.0"])
-plt.xticks([1, 2, 3], ["FB", "ES", "NS"])
-save_fig_title = "Mean_KL_vs_method_Boxplot" + ".pdf"
+plt.xticks([1, 2, 3], ["designed \n sequences", "evolved \n sequences", "natural \n sequences"])
+save_fig_title = "KL" + ".eps"
 savefig(save_fig_title, format = None)
-
+'''
 
 

@@ -1,4 +1,4 @@
-#!usr/local/bin/python
+#!/usr/bin/python
 import sys, os, math, string, re, gzip, urllib, shutil, Bio, subprocess
 import cStringIO 
 from Bio.PDB import *
@@ -9,6 +9,7 @@ import numpy as np
 from Bio.PDB.Polypeptide import *
 from pylab import *
 import matplotlib.pyplot as plt
+from Bio.PDB import PDBParser
 
 #LAST UPDATED: Apr 15, 2017
 #Description: This is a series of functions that are used in the Protein Design Project Analysis
@@ -681,6 +682,7 @@ def getResNumber(residue):
     assert(id[2]==' ')
     return id[1]
 
+'''
 def get_wcn_values(pdb_id, chain_id):
     searchPDB = pdb_id + "_" + chain_id + ".pdb"  
     pdbLocation = duncan_structure_path + searchPDB 
@@ -717,6 +719,7 @@ def get_cn13_values(pdb_id, chain_id):
             cn_values.append(i)
             icn_values.append(float(1.0/i))
     return (cn_values,icn_values) 
+'''
 
 #This calculates the RSA values for a PDB using DSSP. It returns a list of the Amino Acids, a list of RSA values, and a dictionary mapping residue positions to RSA. 
 def get_noah_RSA_values(pdb_id, chain_id):
@@ -770,7 +773,6 @@ def get_mean_designed_data(file_of_data):
     designed_mean_RSA_values = []
     designed_mean_entropy_values = []
     designed_cor_entropy_RSA_values = []
-    designed_cor_entropy_iCN_values = []
     designed_cor_entropy_iWCN_values = []
     designed_mean_KL_values = []
     designed_data = []
@@ -788,9 +790,8 @@ def get_mean_designed_data(file_of_data):
         designed_mean_entropy_values.append(data[3])
         designed_cor_entropy_RSA_values.append(data[4])
         designed_mean_KL_values.append(data[5])
-        designed_cor_entropy_iCN_values.append(data[6])
-        designed_cor_entropy_iWCN_values.append(data[7])
-    return designed_mean_RSA_values, designed_mean_entropy_values, designed_cor_entropy_RSA_values, designed_mean_KL_values, designed_cor_entropy_iCN_values, designed_cor_entropy_iWCN_values
+        designed_cor_entropy_iWCN_values.append(data[6])
+    return designed_mean_RSA_values, designed_mean_entropy_values, designed_cor_entropy_RSA_values, designed_mean_KL_values, designed_cor_entropy_iWCN_values
 
 def get_entropy_corr_data(file_of_data):
     natural_rosetta_corr_values = []

@@ -57,17 +57,17 @@ setp(b1['boxes'], color =  'black')
 setp(b1['caps'], color = 'black')
 setp(b1['medians'], color = 'black')
 setp(b1['fliers'], color  = 'black')
-xlabel("Methods")
+#xlabel("Methods")
 #ylabel("Mean entropy # of amino acids")
-ylabel(r'$\Omega$')
+ylabel("Mean effective # of amino acids")
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 ax.get_xaxis().tick_bottom()
 ax.get_yaxis().tick_left()
 plt.ylim(0, 6)
-plt.xticks([1, 2, 3], ["FB", "ES", "NS"])
+plt.xticks([1, 2, 3], ["designed", "evolved", "natural"])
 
-save_fig_title = "mean_entropy" + ".pdf"
+save_fig_title = "mean_entropy" + ".eps"
 savefig(save_fig_title, format = None)
 
 #plt.show()
