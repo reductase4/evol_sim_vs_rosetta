@@ -27,7 +27,7 @@ def cal_divergence(filePath, naturalPath, withGaps):
 	return result_list
 
 PDBS = ["1ci0A", "1g58B", "1hujA", "1ibsA", "1jlwA", "1kzlA", "1m3uA", "1mozA", "1pv1A", "1qmvA", "1riiA", "1v9sB", "1w7wB", "1x1oB", "1ypiA", "1znnA", "2a84A", "2bcgY", "2br9A", "2cjmC", "2esfA", "2fliA", "2gv5D", "1b4tA", "1efvB", "1gv3A", "1hurA", "1ky2A", "1okcA", "1r6mA", "1xtdA", "1ysbA", "1zwkA", "2aiuA", "2cfeA", "2cnvA", "2eu8A", "2g0nB"]
-#PDBS = ["1b4tA"]
+#PDBS = ["1ci0A"]
 FASTA_PATH = "/Users/qian/Desktop/evol_sim_vs_rosetta/sequences/"
 NATURAL_FILE_PATH = "aligned_sequences/"
 NATURAL_FILE_POSFIX = "Aligned_Sequences.fasta"

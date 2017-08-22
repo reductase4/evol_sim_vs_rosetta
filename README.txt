@@ -1,4 +1,4 @@
-Written/Last Updated on Apr 20, 2017 by Qian Jiang
+Written/Last Updated on Aug 22, 2017 by Qian Jiang
  
 Directories:
 
@@ -27,14 +27,30 @@ graphing/
     get_mean_effective_num_plot.py
         This script is the script that is used to create Figure 3.
     get_cor_combo.py
-        This script is the script that is used to create Figures 4, S2 and S3.
-    get_cor_entropy_RSA_comb.py
+        This script is the script that is used to create Figures 4, 7 and S2.
+    get_cor_entropy_RSA.py
         This script is the script that is used to create Figure 5.
     get_re_simulated_combo.py
         This script is the script that is used to create Figure 6.
     get_combo_freq_plots.py
         This script is the script that is used to create Figure S1.
-    
+    density.R
+        This script is the script that is used to create Figure S3.
+    get_cor_entropy_RSA_comb.py
+        This script is the script that is used to create Figure S5.
+    get_seq_divergence_ten.py
+        This script is the script that is used to create Figure S7.
+
+matched_stability/
+    find_matched_seq.py
+        This is a script that finds score matched sequences
+    density.R
+        This script is the script that is used to create Figure S4.
+
+max_score_evol_sim/
+    density.R
+        This script is the script that is used to create Figure S6.
+
 t_test/
     Contains all of the R scripts used in the analysis
 

@@ -15,10 +15,12 @@ mean_KL_method_data = mean_KL_method_file.readlines()
 mean_KL_method_file.close()
 header = mean_KL_method_data.pop(0)
 
+'''
 mean_KL_method_ordered_file = open("graph_mean_KL_all_method_data_ordered.csv", "r")
 mean_KL_method_ordered_data = mean_KL_method_ordered_file.readlines()
 mean_KL_method_ordered_file.close()
 ordered_header = mean_KL_method_ordered_data.pop(0)
+'''
 
 all_method_data = []
 all_method_mean_KL_data_array = [] 
@@ -30,6 +32,7 @@ for line in mean_KL_method_data:
     mean_KL_method_values_array = analysis_functions.make_array(data)
 all_method_mean_KL_data_array = array(all_method_data)
 
+'''
 all_method_ordered_data = []
 all_method_ordered_mean_KL_data_array = [] 
 for line in mean_KL_method_ordered_data:
@@ -39,6 +42,7 @@ for line in mean_KL_method_ordered_data:
     all_method_ordered_data.append(data_array)
     mean_KL_ordered_method_values_array = analysis_functions.make_array(data)
 all_method_ordered_mean_KL_data_array = array(all_method_ordered_data)
+'''
 
 #Make boxplot for method vs Mean KL with unordered boxplot
 fig = plt.figure(dpi = 500)

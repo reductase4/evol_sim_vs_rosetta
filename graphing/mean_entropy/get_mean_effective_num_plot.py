@@ -17,14 +17,14 @@ designed_mean_entropy_values_rosetta = []
 designed_mean_entropy_values_evolved = []
 
 protein_file_name = "graph_mean_data_natural.csv"
-[natural_mean_RSA_values, natural_mean_entropy_values, natural_cor_entropy_RSA_values, natural_mean_split_KL_values, natural_cor_entropy_icn_values, natural_cor_entropy_iwcn_values] = af.get_mean_designed_data(protein_file_name)
+[natural_mean_RSA_values, natural_mean_entropy_values, natural_cor_entropy_RSA_values, natural_mean_split_KL_values, natural_cor_entropy_iwcn_values] = af.get_mean_designed_data(protein_file_name)
    
 protein_file_name = "graph_mean_data_rosetta.csv"
-[designed_mean_RSA_values_rosetta, designed_mean_entropy_values_rosetta, designed_cor_entropy_RSA_values_rosetta, designed_mean_KL_values_rosetta, designed_cor_entropy_icn_values_rosetta, designed_cor_entropy_iwcn_values_rosetta] = af.get_mean_designed_data(protein_file_name)
+[designed_mean_RSA_values_rosetta, designed_mean_entropy_values_rosetta, designed_cor_entropy_RSA_values_rosetta, designed_mean_KL_values_rosetta, designed_cor_entropy_iwcn_values_rosetta] = af.get_mean_designed_data(protein_file_name)
 
   
 protein_file_name = "graph_mean_data_evolved.csv"
-[designed_mean_RSA_values_evolved, designed_mean_entropy_values_evolved, designed_cor_entropy_RSA_values_evolved, designed_mean_KL_values_evolved, designed_cor_entropy_icn_values_evolved, designed_cor_entropy_iwcn_values_evolved] = af.get_mean_designed_data(protein_file_name)
+[designed_mean_RSA_values_evolved, designed_mean_entropy_values_evolved, designed_cor_entropy_RSA_values_evolved, designed_mean_KL_values_evolved, designed_cor_entropy_iwcn_values_evolved] = af.get_mean_designed_data(protein_file_name)
 
 
 all_temp_entropy_values.append(designed_mean_entropy_values_rosetta)
