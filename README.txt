@@ -60,15 +60,15 @@ t_test/
 methods_scripts/
     Contains scripts that were used to run minimization, RosettaDesign and evolutionary simulation
 
-    score_mutant_AIT_v1_1.py
-        This is a script that was used to minimize native structures
-        For arguments you must give it the PDB name.
     design_protein_fixed.sh
         This the shell script that was used to create the fixed backbone protein design
         For arguments you must give it the PDB name and the temperature used for Backrub.
         For a fixed design, we just set the temperature to 0.0 purely for identification purposes.
     score_mutant_AIT_v1_1.py
         This is a script that was used to minimize native structures
+        For arguments you must give it the PDB name.
+    score_mutant_AIT_v3_4.py
+        This is a script that was used to run evolutionary simulation
         For arguments you must give it the PDB name and score extracted from minimized structures.
 
 sequences/
